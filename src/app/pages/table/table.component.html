@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Danh sách</h4>
+    <a routerLink="/pages/table/add" style="text-decoration: none ; padding-top: 1% ; padding-bottom: 1% ; border-bottom: 2px solid green ; border-right: 2px solid green ; padding-right: 1% ;">
+      <i class="fa fa-plus"></i> THÊM
+    </a>
+</div>  
+
+<div class="w-100 mt-4">
+    <table style = 'text-align:center' class="table table-bordered w-100 align-middle">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Số bàn</th>
+                <th scope="col">Trạng thái</th>
+                <th style = 'width: 20% ;' scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    3
+                </td>
+                <td>
+                    12
+                </td>
+                <td>
+                    Sử dụng
+                </td>
+                <td style="display: flex ; justify-content:space-around ;">
+                    <span style="width: 36% ;"><a routerLink='/pages/table/update'>
+                        <button class="btn btn-primary">
+                            <img style = 'width: 45% ;' src='../../../assets/images/icons8-edit-new.svg'>
+                        </button>
+                    </a></span>
+                    <span style="width: 36% ;"><a routerLink='/pages/table/delete'>
+                        <button class="btn btn-danger">
+                            <img style = 'width: 45% ;' src='../../../assets/images/icon8-delete-new.svg'>
+                        </button>
+                    </a></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
