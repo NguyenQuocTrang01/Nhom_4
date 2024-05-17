@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import {DashboardComponent} from './dashboard.component';
+import {CustomerDeleteComponent} from './delete.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
 @NgModule({
   imports: [
     BreadcrumbModule
   ],
   declarations: [
-    DashboardComponent
+    CustomerDeleteComponent
   ],
 })
-export class DashboardModule { }
+export class CustomerDeleteModule { }
