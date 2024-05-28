@@ -9,6 +9,11 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
+      path: '',
+      component: DashboardComponent,
+      data: {breadcrumb: 'Dashboard'},
+    },
+    {
       path: 'dashboard',
       component: DashboardComponent,
       data: {breadcrumb: 'Dashboard'},

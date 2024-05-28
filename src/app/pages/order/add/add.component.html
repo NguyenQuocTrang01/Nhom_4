@@ -1,62 +1,69 @@
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="text-center">Thêm hóa đơn</h4>
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card" style="border: 1px solid rgb(230, 230, 235) ; border-radius: 5px ;">
+            <div class="card-header">
+                <div class="text-center" style="padding-top: 1% ; padding-bottom: 1% ;">
+                    <span style="font-size: large ;">THÊM HÓA ĐƠN</span>
                 </div>
-                <div class="card-body">
-                    <form action="index.php?act=user&action=add" method="post">
-                        <div class="form-group">
-                            <label for="role">ID người dùng</label>
-                            <select class="form-control" id="role" name="role" required>
-                                <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
-                            </select>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="role">ID sản phẩm</label>
-                            <select class="form-control" id="role" name="role" required>
-                                <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
-                            </select>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="username">Số lượng</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="email">Giá</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="username">Ngày nhập</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="role">Trạng thái</label>
-                            <select class="form-control" id="role" name="role" required>
-                                <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
-                            </select>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="role">Số bàn</label>
-                            <select class="form-control" id="role" name="role" required>
-                                <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
-                            </select>
-                        </div>
-                        <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                            <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                            <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
-                        </div>
-                    </form>
-                </div>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit ()" [formGroup]="addForm">
+                    <div class="form-group">
+                        <label for="role">ID người dùng</label>
+                        <select class="form-control" name="user_id" formControlName="user_id">
+                            <option value="">Chọn ID</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">Người dùng</option>
+                        </select>
+                        <span *ngIf="isVal && addForm.get ('user_id')!.invalid" class="text-danger">Vui lòng chọn người dùng!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="role">ID sản phẩm</label>
+                        <select class="form-control" name="product_id" formControlName="product_id">
+                            <option value="">Chọn ID</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">Người dùng</option>
+                        </select>
+                        <span *ngIf="isVal && addForm.get ('product_id')!.invalid" class="text-danger">Vui lòng chọn sản phẩm!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="username">Số lượng</label>
+                        <input type="text" class="form-control" name="quantity" formControlName="quantity">
+                        <span *ngIf="isVal && addForm.get ('quantity')!.invalid" class="text-danger">Vui lòng chọn số lượng!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="email">Giá</label>
+                        <input type="email" class="form-control" name="price" formControlName="price">
+                        <span *ngIf="isVal && addForm.get ('price')!.invalid" class="text-danger">Vui lòng chọn giá!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="username">Ngày nhập</label>
+                        <input type="date" class="form-control" name="date" formControlName="date">
+                        <span *ngIf="isVal && addForm.get ('date')!.invalid" class="text-danger">Vui lòng chọn ngày nhập!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="role">Trạng thái</label>
+                        <select class="form-control" name="status" formControlName="status">
+                            <option value="">Chọn ID</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">Người dùng</option>
+                        </select>
+                        <span *ngIf="isVal && addForm.get ('status')!.invalid" class="text-danger">Vui lòng chọn trạng thái!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="role">Số bàn</label>
+                        <select class="form-control" name="table_id" formControlName="table_id">
+                            <option value="">Chọn ID</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">Người dùng</option>
+                        </select>
+                        <span *ngIf="isVal && addForm.get ('table_id')!.invalid" class="text-danger">Vui lòng chọn số bàn!</span>
+                    </div>
+                    <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
+                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
+                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
