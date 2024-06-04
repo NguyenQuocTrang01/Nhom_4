@@ -8,21 +8,21 @@ import {OrderdetailDeleteComponent} from "./delete/delete.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: OrderdetailComponent,
   },
   {
-    path: 'add',
+    path: 'de/add',
     component: OrderdetailAddComponent,
     data: {breadcrumb: 'Thêm'},
   },
   {
-    path: 'update',
+    path: 'de/update/:id',
     component: OrderdetailUpdateComponent,
     data: {breadcrumb: 'Sửa'},
   },
   {
-    path: 'delete',
+    path: 'de/delete/:id',
     component: OrderdetailDeleteComponent,
     data: {breadcrumb: 'Xóa'},
   },

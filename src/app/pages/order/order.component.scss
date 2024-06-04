@@ -1,0 +1,35 @@
+::ng-deep .custom-pagination {
+    .ngx-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+  
+      .current {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0.5rem;
+      }
+  
+      a,
+      .disabled {
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #f1f1f1;
+        }
+      }
+    }
+  }
+  

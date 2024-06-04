@@ -1,6 +1,12 @@
 <div class="bg-white p-4" style="border: 1px solid rgb(230, 230, 235) ; border-radius: 5px ;">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <span style="font-size:larger ;">DANH SÁCH</span>
+        <!-- <div class="d-flex">
+            <input style="margin-right: 10% ;" type="text" class="form-control" placeholder="Tìm kiếm..." [(ngModel)]="searchText" (input)="onSearchTextEntered($event)">
+            <a routerLink="/pages/table/add">
+                <button type="button" class="btn btn-success">THÊM</button>
+            </a>
+        </div> -->
         <a routerLink="/pages/table/add">
             <button type="button" class="btn btn-success">THÊM</button>
         </a>
@@ -10,30 +16,30 @@
         <table style = 'text-align:center' class="table table-bordered w-100 align-middle">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">STT</th>
                     <th scope="col">Số bàn</th>
                     <th scope="col">Trạng thái</th>
                     <th style = 'width: 20% ;' scope="col">Edit</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody *ngIf="dataTable.length > 0">
+                <tr *ngFor="let dataTable of dataTable | paginate: { itemsPerPage: pageSize, currentPage: currentPage } , let i = index">
                     <td>
-                        3
+                        {{ (currentPage - 1) * pageSize + (i + 1) }}
                     </td>
                     <td>
-                        12
+                        {{dataTable.number}}
                     </td>
                     <td>
-                        Sử dụng
+                        {{dataTable.status}}
                     </td>
                     <td style="display: flex ; justify-content:space-around ;">
-                        <span style="width: 35% ;"><a routerLink='/pages/table/update'>
+                        <span style="width: 35% ;"><a routerLink='/pages/table/update/{{dataTable.id}}'>
                             <button class="btn btn-primary">
                                 <img style = 'width: 45% ;' src='../../../assets/images/icons8-edit-new.svg'>
                             </button>
                         </a></span>
-                        <span style="width: 35% ;"><a routerLink='/pages/table/delete'>
+                        <span style="width: 35% ;"><a routerLink='/pages/table/delete/{{dataTable.id}}'>
                             <button class="btn btn-danger">
                                 <img style = 'width: 45% ;' src='../../../assets/images/icon8-delete-new.svg'>
                             </button>
@@ -43,4 +49,9 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <div class="d-flex justify-content-center mt-3">
+            <pagination-controls class="custom-pagination" (pageChange)="currentPage = $event"></pagination-controls>
+        </div>  
+    </div>     
 </div>

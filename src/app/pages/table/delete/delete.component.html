@@ -7,15 +7,15 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="index.php?act=user&action=delete&id=1" method="post">
+                <div>
                     <div class="modal-body">
                         Bạn có chắc chắn muốn xóa bàn này?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style="margin-right: 2% ;">Hủy</button>
-                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <button type="button" class="btn btn-secondary" style="margin-right: 2% ;"><a routerLink="/pages/table" class="text-white" style="text-decoration: none ;">Hủy</a></button>
+                        <button type="submit" (click)="onSubmit ()" class="btn btn-danger">Xóa</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

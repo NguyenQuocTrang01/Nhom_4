@@ -11,63 +11,39 @@
                     <div class="form-group row">
                         <div class="col-6">
                             <label for="role">ID người dùng</label>
-                            <select class="form-control" name="user_id" formControlName="user_id">
+                            <select class="form-control" name="customer_id" formControlName="customer_id">
                                 <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
+                                <option *ngFor="let dataCustomer of dataCustomer" value="{{dataCustomer.id}}">{{dataCustomer.username}}</option>
                             </select>
-                            <span *ngIf="isVal && editForm.get ('user_id')!.invalid" class="text-danger">Vui lòng chọn người dùng!</span>
+                            <span *ngIf="isVal && editForm.get ('customer_id')!.invalid" class="text-danger">Vui lòng chọn người dùng!</span>
                         </div>
                         <div class="col-6">
-                            <label for="role">ID sản phẩm</label>
-                            <select class="form-control" name="product_id" formControlName="product_id">
+                            <label for="role">Số bàn</label>
+                            <select class="form-control" name="table_id" formControlName="table_id">
                                 <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
+                                <option *ngFor="let dataTable of dataTable" value="{{dataTable.id}}">{{dataTable.number}}</option>
                             </select>
-                            <span *ngIf="isVal && editForm.get ('product_id')!.invalid" class="text-danger">Vui lòng chọn sản phẩm!</span>
-                        </div>
-                    </div>
-                    <div class="form-group mt-4 row">
-                        <div class="col-6">
-                            <label for="username">Số lượng</label>
-                            <input type="text" class="form-control" name="quantity" formControlName="quantity">
-                            <span *ngIf="isVal && editForm.get ('quantity')!.invalid" class="text-danger">Vui lòng chọn số lượng!</span>
-                        </div>
-                        <div class="col-6">
-                            <label for="email">Giá</label>
-                            <input type="email" class="form-control" name="price" formControlName="price">
-                            <span *ngIf="isVal && editForm.get ('price')!.invalid" class="text-danger">Vui lòng chọn giá!</span>
-                        </div>
-                    </div>
-                    <div class="form-group mt-4 row">
-                        <div class="col-6">
-                            <label for="username">Ngày nhập</label>
-                            <input type="date" class="form-control" name="date" formControlName="date">
-                            <span *ngIf="isVal && editForm.get ('date')!.invalid" class="text-danger">Vui lòng chọn ngày nhập!</span>
-                        </div>
-                        <div class="col-6">
-                            <label for="role">Trạng thái</label>
-                            <select class="form-control" name="status" formControlName="status">
-                                <option value="">Chọn ID</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
-                            </select>
-                            <span *ngIf="isVal && editForm.get ('status')!.invalid" class="text-danger">Vui lòng chọn trạng thái!</span>
+                            <span *ngIf="isVal && editForm.get ('table_id')!.invalid" class="text-danger">Vui lòng chọn số bàn!</span>
                         </div>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="role">Số bàn</label>
-                        <select class="form-control" name="table_id" formControlName="table_id">
-                            <option value="">Chọn ID</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">Người dùng</option>
+                        <label for="role">Trạng thái</label>
+                        <select class="form-control" name="status" formControlName="status">
+                            <option value="{{dataOrder?.status}}">{{dataOrder?.status}}</option>
+                            <option value="Đang chuẩn bị">Đang chuẩn bị</option>
+                            <option value="Chưa thanh toán">Chưa thanh toán</option>
+                            <option value="Đã thanh toán">Đã thanh toán</option>
                         </select>
-                        <span *ngIf="isVal && editForm.get ('table_id')!.invalid" class="text-danger">Vui lòng chọn số bàn!</span>
+                        <span *ngIf="isVal && editForm.get ('status')!.invalid" class="text-danger">Vui lòng chọn trạng thái!</span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="role">Tổng</label>
+                        <input type="number" class="form-control" name="total" formControlName="total">
+                        <span *ngIf="isVal && editForm.get ('total')!.invalid" class="text-danger">Vui lòng chọn số bàn!</span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 25% ; color: white ; text-decoration: none ;" routerLink="/pages/order" class="btn btn-secondary">Hủy</a>
+                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Sửa</button>
                     </div>
                 </form>
             </div>

@@ -10,19 +10,19 @@
                 <form (ngSubmit)="onSubmit ()" [formGroup]="addForm">
                     <div class="form-group">
                         <label for="username">Số bàn</label>
-                        <input type="text" class="form-control" name="numberTable" formControlName="numberTable">
-                        <span *ngIf="isVal && addForm.get ('numberTable')!.invalid" class="text-danger">Vui lòng điền số bàn!</span>
+                        <input type="number" class="form-control" name="number" formControlName="number">
+                        <span *ngIf="isVal && addForm.get ('number')!.invalid" class="text-danger">Vui lòng điền số bàn!</span>
                     </div>
                     <div class="form-group mt-4">
                         <label for="role">Trạng thái</label>
                         <select class="form-control" name="status" formControlName="status">
                             <option value="Sử dụng">Sử dụng</option>
-                            <option value="Bị hư">Bị Hư</option>
+                            <option value="Sữa chữa">Sữa chữa</option>
                         </select>
                         <span *ngIf="isVal && addForm.get ('status')!.invalid" class="text-danger">Vui lòng chọn trạng thái!</span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
+                        <a style="width: 25% ; color: white ; text-decoration: none ;" routerLink="/pages/table" class="btn btn-secondary">Hủy</a>
                         <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
                     </div>
                 </form>

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import {OrderUpdateComponent} from './update.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { OrderRoutingModule } from '../order-routing.module';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -10,6 +13,8 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    HttpClientModule,
+    OrderRoutingModule,
   ],
   declarations: [
     OrderUpdateComponent
