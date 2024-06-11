@@ -5,6 +5,7 @@ import { OrderdetailService } from '../../../@core/services/apis/orderdetail.ser
 import { FormControl , Validators , FormGroup } from '@angular/forms';
 import { Table } from '../../../@core/interfaces/table.interface';
 import { Order } from '../../../@core/interfaces/order.interface';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 import { Router } from '@angular/router';
 
 @Component({
@@ -101,5 +102,13 @@ export class OrderAddComponent implements OnInit {
       console.log (err) ;
     })
   }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }

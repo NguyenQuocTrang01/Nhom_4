@@ -7,27 +7,45 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="index.php?act=user&action=add" method="post">
-                    <div class="form-group">
-                        <label for="role">ID sản phẩm</label>
-                        <select class="form-control" id="role" name="role" required>
+                <form (ngSubmit)="onSubmit ()" [formGroup]="addForm">
+                    <!-- <div class="form-group">
+                        <label for="products_id">ID sản phẩm</label>
+                        <select class="form-control" id="products_id" name="products_id" formControlName="products_id">
                             <option value="">Chọn sản phẩm</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">Người dùng</option>
-                        </select>   
+                            <option value="admin">1</option>
+                            <option value="user">2</option>
+                        </select> 
+                        <span *ngIf="isVal && addForm.get ('products_id')!.invalid" class="text-danger">Vui lòng điền vao!</span>  
                     </div>
                     <div class="form-group mt-4">
-                        <label for="role">Mức đánh giá</label>
-                        <select class="form-control" id="role" name="role" required>
+                        <label for="star">Mức đánh giá</label>
+                        <select class="form-control" id="star" name="star" formControlName="star">
                             <option value="">Chọn đánh giá</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">Người dùng</option>
+                            <option value="admin">1</option>
+                            <option value="user">2</option>
                         </select>
+                        <span *ngIf="isVal && addForm.get ('star')!.invalid" class="text-danger">Vui lòng điền vao!</span>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="products_id">ID San Pham</label>
+                        <input type="number" class="form-control" name="products_id" formControlName="products_id">
+                        <span *ngIf="isVal && addForm.get ('products_id')!.invalid" class="text-danger">Vui lòng điền vao!</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="star">star</label>
+                        <input type="number" class="form-control" name="star" formControlName="star">
+                        <span *ngIf="isVal && addForm.get ('star')!.invalid" class="text-danger">Vui lòng điền vao!</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="customers_id">ID Khach Hang</label>
+                        <input type="number" class="form-control" name="customers_id" formControlName="customers_id">
+                        <span *ngIf="isVal && addForm.get ('customers_id')!.invalid" class="text-danger">Vui lòng điền vao!</span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 20%" routerLink="/pages/evaluate"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>
+                        <button style="width: 20%" type="submit" *ngFor="let status of primary" nbButton [status]="status" hero>Thêm</button>
                     </div>
+                    
                 </form>
             </div>
         </div>

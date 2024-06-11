@@ -4,6 +4,7 @@ import { TableService } from '../../../@core/services/apis/table.service';
 import { Table } from '../../../@core/interfaces/table.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-update',
@@ -54,5 +55,13 @@ export class TableUpdateComponent implements OnInit {
       })
     }
   }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }

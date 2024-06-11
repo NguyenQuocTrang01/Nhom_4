@@ -6,6 +6,7 @@ import {BreadcrumbModule} from "xng-breadcrumb";
 
 import { HttpClientModule } from '@angular/common/http';
 import {OrderdetailRoutingModule} from '../orderdetail-routing.module';
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {OrderdetailRoutingModule} from '../orderdetail-routing.module';
     CommonModule,
     OrderdetailRoutingModule,
     HttpClientModule,
+    NbIconModule, NbButtonModule
   ],
   declarations: [
     OrderdetailUpdateComponent

@@ -5,4 +5,8 @@ export interface IAPIEndpoint {
   customer: any ,
   product: any ,
   table: any ,
+  staff: any ,
+  category: any ,
+  revenues: any,
+  evaluates: any,
 }

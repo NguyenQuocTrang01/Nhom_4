@@ -7,15 +7,15 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="index.php?act=user&action=delete&id=1" method="post">
+                <div>
                     <div class="modal-body">
                         Bạn có chắc chắn muốn xóa người dùng này?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style="margin-right: 2% ;">Hủy</button>
-                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <button style="margin-right: 2% ;" *ngFor="let status of primary" nbButton [status]="status" hero><a routerLink="/pages/customer" class="text-white" style="text-decoration: none ;">HỦY</a></button>
+                        <button (click)="onSubmit ()" *ngFor="let status of danger" nbButton [status]="status" hero>XÓA</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

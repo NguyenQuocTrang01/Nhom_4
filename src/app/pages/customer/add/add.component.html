@@ -7,26 +7,26 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="index.php?act=user&action=add" method="post">
+                <form (ngSubmit)="onSubmit ()" [formGroup]="addForm">
                     <div class="form-group">
                         <label for="username">Tên</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="name" class="form-control" name="name" formControlName="username">
                     </div>
                     <div class="form-group mt-4">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" name="email" formControlName="email">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Địa chỉ</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" class="form-control" name="text" formControlName="address">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Số điện thoại</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="phone">Số điện thoại</label>
+                        <input type="number" class="form-control" name="number" formControlName="phone">
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 20%" routerLink="/pages/customer"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>
+                        <button style="width: 20%" type="submit" *ngFor="let status of primary" nbButton [status]="status" hero>Thêm</button>
                     </div>
                 </form>
             </div>

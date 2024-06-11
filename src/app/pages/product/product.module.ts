@@ -7,6 +7,9 @@ import {ProductAddModule} from './add/add.module';
 import {ProductUpdateModule} from './update/update.module';
 import {ProductDeleteModule} from './delete/delete.module';
 
+import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -14,7 +17,10 @@ import {ProductDeleteModule} from './delete/delete.module';
     ProductAddModule,
     ProductUpdateModule,
     ProductDeleteModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    CommonModule,
+    NgxPaginationModule,
+    NbIconModule, NbButtonModule
   ],
   declarations: [
     ProductComponent

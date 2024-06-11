@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API_ENDPOINT } from '../../config/api-endpoint.config';
 import { Table } from '../../interfaces/table.interface';
+import { AuthService } from '../apis/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,14 @@ import { Table } from '../../interfaces/table.interface';
 
 export class TableService {
 
-  constructor (private http : HttpClient) { }
+  constructor (private http : HttpClient , private authService : AuthService) { }
 
   getTable () : Observable <any> {
-    return this.http.get (API_ENDPOINT.table.base) ;
+    return this.http.get (API_ENDPOINT.table.base ,
+      { 
+        headers: new HttpHeaders ().set ('x-access-token' , this.authService.getToken ())
+      }
+    ) ;
   }
 
   getTableById (id: any) : Observable <any> {

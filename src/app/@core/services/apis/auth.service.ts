@@ -22,20 +22,23 @@ export class AuthService extends ApiService {
   private jwtHelperService = new JwtHelperService();
 
   constructor(
-      private _http: HttpClient,
-      private router: Router,
-      private localStorageService: LocalStorageService,
+    private _http: HttpClient,
+    private router: Router,
+    private localStorageService: LocalStorageService,
   ) {
     super(_http);
   }
 
-  login(form: ILogin): Observable<any>  {
-    return this.post<any>(API_BASE_URL + API_ENDPOINT.auth.login, {  
+  login(form: ILogin): Observable<any> {
+    return this.post <any> (API_BASE_URL + API_ENDPOINT.auth.login, {  
       idLogin: form.email.trim(),
       password: form.password,
     });
   }
 
+  dangNhap (form : any) : Observable <any> {
+    return this._http.post (API_ENDPOINT.auth.dangNhap , form) ;
+  }
 
   requirePassword(form: ILogin): Observable<any> {
     return this.post(API_BASE_URL + API_ENDPOINT.auth.login, {
@@ -107,6 +110,10 @@ export class AuthService extends ApiService {
     return this.post<any>(API_BASE_URL + API_ENDPOINT.auth.logout, this.getToken());
   }
 
+  getStaff () {
+    return this._http.get (API_ENDPOINT.staff.base) ;
+  }
+
   isLoggedIn(): boolean {
     if (this.getToken()) {
       const expired = this.jwtHelperService.isTokenExpired(this.getToken());
@@ -118,7 +125,10 @@ export class AuthService extends ApiService {
     return false;
   }
 
-  override getToken() {
-    return this.localStorageService.getItem<any>(LOCALSTORAGE_KEY.token);
+  // override
+
+  getToken() {
+    return LOCALSTORAGE_KEY.token ;
+    // return this.localStorageService.getItem <any> (LOCALSTORAGE_KEY.token) ;
   }
 }

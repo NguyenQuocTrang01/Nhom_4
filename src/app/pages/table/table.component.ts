@@ -1,12 +1,14 @@
 import { Component , OnInit } from '@angular/core';
 import { TableService } from '../../@core/services/apis/table.service';
 import { Table } from '../../@core/interfaces/table.interface';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
+
 export class TableComponent implements OnInit {
 
   dataTable : Table [] = [] ;
@@ -29,21 +31,27 @@ export class TableComponent implements OnInit {
     })
   }
 
-  // onSearchTextEntered (event: any) {
-  //   this.searchText = event.target.value ;
-  //   this.currentPage = 1 ;
-  // }
+  onSearchTextEntered (event: any) {
+    this.searchText = event.target.value ;
+    this.currentPage = 1 ;
+  }
 
-  // get filteredData () : Table [] {
-  //   if (!this.searchText) {
-  //     return this.dataTable ;
-  //   }
+  get filteredData () : Table [] {
+    if (!this.searchText) {
+      return this.dataTable ;
+    }
 
-  //   return this.dataTable.filter (item =>
-  //     (item.number ? item.number.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) ||
-  //     item.status.toLowerCase ().includes (this.searchText.toLowerCase ())
-  //   ) ;
-  // }
+    return this.dataTable.filter (item =>
+      (item.number ? item.number.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) ||
+      item.status.toLowerCase ().includes (this.searchText.toLowerCase ())
+    ) ;
+  }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }
 

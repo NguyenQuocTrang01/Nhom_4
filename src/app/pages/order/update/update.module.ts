@@ -6,6 +6,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { OrderRoutingModule } from '../order-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule,
     OrderRoutingModule,
+    NbIconModule, NbButtonModule
   ],
   declarations: [
     OrderUpdateComponent

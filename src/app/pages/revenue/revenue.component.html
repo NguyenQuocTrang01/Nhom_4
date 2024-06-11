@@ -2,7 +2,10 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <span style="font-size:larger ;">DANH SÁCH</span>
         <a routerLink="/pages/revenue/add">
-            <button type="button" class="btn btn-success">THÊM</button>
+            <button *ngFor="let status of success" nbButton [status]="status" hero>
+                THÊM
+                <!-- <nb-icon icon="plus-outline"></nb-icon> -->
+            </button>
         </a>
     </div>  
     
@@ -15,40 +18,45 @@
                     <th scope="col">Chi phí</th>
                     <th scope="col">Doanh thu</th>
                     <th scope="col">Lợi nhuận</th>
-                    <th style = 'width: 20% ;' scope="col">Edit</th>
+                    <th style = 'width: 12% ;' scope="col">Edit</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody *ngIf="dataRevenue.length > 0">
+                <tr  *ngFor="let dataRevenue of dataRevenue | paginate: { itemsPerPage: pageSize, currentPage: currentPage } , let i = index">
                     <td>
-                        3
+                        {{dataRevenue.id}}
+                 
                     </td>
                     <td>
-                        2013/02/10
+                        {{dataRevenue.date.slice (0, 10)}}
                     </td>
                     <td>
-                        200.000
+                        {{dataRevenue.total_revenue}}
                     </td>
                     <td>
-                        200.000
+                        {{dataRevenue.total_cost}}
                     </td>
                     <td>
-                        200.000
+                        {{dataRevenue.profit}}
                     </td>
                     <td style="display: flex ; justify-content:space-around ;">
-                        <span style="width: 35% ;"><a routerLink='/pages/revenue/update'>
-                            <button class="btn btn-primary">
-                                <img style = 'width: 45% ;' src='../../../assets/images/icons8-edit-new.svg'>
+                        <a routerLink='/pages/revenue/update/{{dataRevenue.id}}'>
+                            <button *ngFor="let status of primary" nbButton [status]="status" hero>
+                                <nb-icon icon="edit-outline"></nb-icon>
                             </button>
-                        </a></span>
-                        <span style="width: 35% ;"><a routerLink='/pages/revenue/delete'>
-                            <button class="btn btn-danger">
-                                <img style = 'width: 45% ;' src='../../../assets/images/icon8-delete-new.svg'>
+                        </a>
+                        <a routerLink='/pages/revenue/delete/{{dataRevenue.id}}'>
+                            <button *ngFor="let status of danger" nbButton [status]="status" hero>
+                                <nb-icon icon="trash-2-outline"></nb-icon>
                             </button>
-                        </a></span>
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
+        
     </div>
+    <div class="d-flex justify-content-center mt-3">
+        <pagination-controls class="custom-pagination" (pageChange)="urrentPage = $event"></pagination-controls>
+    </div> 
 </div>

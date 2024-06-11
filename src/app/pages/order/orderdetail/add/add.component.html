@@ -22,8 +22,8 @@
                         <span *ngIf="isVal && addForm.get ('quantity')!.invalid" class="text-danger">Vui lòng chọn số lượng!</span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" routerLink="/pages/order/detail/{{order_id}}" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 20%" routerLink="/pages/order/detail/{{order_id}}"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>
+                        <button style="width: 20%" type="submit" *ngFor="let status of primary" nbButton [status]="status" hero>Thêm</button>
                     </div>
                 </form>
             </div>

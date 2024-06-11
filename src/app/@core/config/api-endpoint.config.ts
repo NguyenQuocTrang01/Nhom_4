@@ -8,9 +8,13 @@ export const API_ENDPOINT: IAPIEndpoint = {
     base: API_BASE_URL + '/' + 'auth',
     login: '/auth/login',
     logout: '/auth/logout',
+    dangNhap: API_BASE_URL + '/api/' +  'login',
   },
   order: {
     base: API_BASE_URL + '/api/' + 'orders',
+  },
+  staff: {
+    base: API_BASE_URL + '/api/' + 'staffs',
   },
   customer: {
     base: API_BASE_URL + '/api/' + 'customers',
@@ -20,10 +24,19 @@ export const API_ENDPOINT: IAPIEndpoint = {
     baseAdd: API_BASE_URL + '/api/' + 'orderdetails',
     deleteByOrderID: API_BASE_URL + '/api/' + 'orderdetails/order_id',
   },
+  category: {
+    base: API_BASE_URL + '/api/' + 'categorys',
+  },
   product: {
     base: API_BASE_URL + '/api/' + 'products',
   },
   table: {
     base: API_BASE_URL + '/api/' + 'table',
+  },
+  revenues: {
+    base: API_BASE_URL + '/api/' + 'revenues',
+  },
+  evaluates: {
+    base: API_BASE_URL + '/api/' + 'evaluates',
   }
 };

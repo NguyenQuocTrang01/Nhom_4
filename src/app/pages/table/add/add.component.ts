@@ -1,8 +1,9 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit , Input } from '@angular/core';
 import { FormControl , Validators , FormGroup } from '@angular/forms';
 import { TableService } from '../../../@core/services/apis/table.service';
 import { Router } from '@angular/router';
 import { Table } from '../../../@core/interfaces/table.interface';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-add',
@@ -12,6 +13,7 @@ import { Table } from '../../../@core/interfaces/table.interface';
 
 export class TableAddComponent implements OnInit {
 
+  @Input () showSuccessAlert : boolean = false ;
   isVal : boolean = false ;
   addForm!: FormGroup ;
   
@@ -39,5 +41,13 @@ export class TableAddComponent implements OnInit {
       console.log ('form chua hop le!') ;
     }
   }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }

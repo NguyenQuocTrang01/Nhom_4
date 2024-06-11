@@ -6,6 +6,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms'
 
 import { TableRoutingModule } from '../table-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     CommonModule,
     TableRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NbIconModule, 
+    NbButtonModule
   ],
   declarations: [
     TableAddComponent,

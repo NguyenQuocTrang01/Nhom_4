@@ -7,22 +7,25 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="index.php?act=user&action=add" method="post">
+                <form (ngSubmit)="onSubmit ()" [formGroup]="editForm">
                     <div class="form-group">
-                        <label for="username">Chi phí</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <label for="total_cost">Chi phí</label>
+                        <input type="text" class="form-control" id="total_cost" name="total_cost" formControlName="total_cost">
+                        <span *ngIf="isVal && editForm.get ('total_cost')!.invalid" class="text-danger">Vui lòng điền vào!</span>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="email">Doanh thu</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="total_revenue">Doanh thu</label>
+                        <input type="total_revenue" class="form-control" id="total_revenue" name="total_revenue" formControlName="total_revenue">
+                        <span *ngIf="isVal && editForm.get ('total_revenue')!.invalid" class="text-danger">Vui lòng điền vào!</span>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Ngày</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="profit">profit</label>
+                        <input type="number" class="form-control" id="profit" name="profit" formControlName="profit">
+                        <span *ngIf="isVal && editForm.get ('profit')!.invalid" class="text-danger">Vui lòng điền vào!</span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 20%" routerLink="/pages/revenue"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>
+                        <button style="width: 20%" type="submit" *ngFor="let status of primary" nbButton [status]="status" hero>Lưu</button>
                     </div>
                 </form>
             </div>

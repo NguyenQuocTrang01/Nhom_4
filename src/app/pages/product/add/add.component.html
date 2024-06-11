@@ -7,34 +7,38 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post">
+                <form (ngSubmit)="onSubmit ()" [formGroup]="addForm">
                     <div class="form-group">
-                        <label for="username">Tên</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <label for="name">Tên</label>
+                        <input type="text" class="form-control" name="name" formControlName="name">
+                        <span *ngIf="isVal && addForm.get ('name')!.invalid" class="text-danger">Vui lòng điền tên!</span>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="email">Giá</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="price">Giá</label>
+                        <input type="price" class="form-control" name="price" formControlName="price">
+                        <span *ngIf="isVal && addForm.get ('price')!.invalid" class="text-danger">Vui lòng nhập giá!</span>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Mô tả</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="desc_c">Mô tả</label>
+                        <input type="desc_c" class="form-control" name="desc_c" formControlName="desc_c">
+                        <span *ngIf="isVal && addForm.get ('desc_c')!.invalid" class="text-danger">Vui lòng điền mô tả!</span>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="role">Danh mục</label>
-                        <select class="form-control" id="role" name="role" required>
+                        <label for="category_id">Danh mục</label>
+                        <select class="form-control" name="category_id" formControlName="category_id">
                             <option value="">Chọn danh mục</option>
-                            <option value="admin">Cà phê</option>
-                            <option value="user">Trà</option>
+                            <option *ngFor="let dataCategory of dataCategory" value="{{dataCategory.id}}">{{dataCategory.name}}</option>
                         </select>
+                        <span *ngIf="isVal && addForm.get ('category_id')!.invalid" class="text-danger">Vui lòng chọn danh mục!</span>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Hình ảnh</label>
-                        <input type="file" class="form-control" id="password" name="password" required>
+                        <label for="image">Hình ảnh</label>
+                        <input type="file" class="form-control" name="image" formControlName="image">
+                        <span *ngIf="isVal && addForm.get ('image')!.invalid" class="text-danger">Vui lòng chọn hình ảnh!</span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 20%" routerLink="/pages/product"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>
+                        <button style="width: 20%" type="submit" *ngFor="let status of primary" nbButton [status]="status" hero>Thêm</button>
                     </div>
                 </form>
             </div>

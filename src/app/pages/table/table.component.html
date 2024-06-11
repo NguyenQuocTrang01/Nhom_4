@@ -1,15 +1,15 @@
 <div class="bg-white p-4" style="border: 1px solid rgb(230, 230, 235) ; border-radius: 5px ;">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <span style="font-size:larger ;">DANH SÁCH</span>
-        <!-- <div class="d-flex">
-            <input style="margin-right: 10% ;" type="text" class="form-control" placeholder="Tìm kiếm..." [(ngModel)]="searchText" (input)="onSearchTextEntered($event)">
+        <div class="d-flex">
+            <input style="margin-right: 10% ; height: 40px ;" type="text" class="form-control" placeholder="Tìm kiếm..." [(ngModel)]="searchText" (input)="onSearchTextEntered($event)">
             <a routerLink="/pages/table/add">
-                <button type="button" class="btn btn-success">THÊM</button>
+                <button *ngFor="let status of success" nbButton [status]="status" hero>
+                    THÊM
+                    <!-- <nb-icon icon="plus-outline"></nb-icon> -->
+                </button>
             </a>
-        </div> -->
-        <a routerLink="/pages/table/add">
-            <button type="button" class="btn btn-success">THÊM</button>
-        </a>
+        </div>
     </div>  
     
     <div class="w-100 mt-4">
@@ -19,11 +19,11 @@
                     <th scope="col">STT</th>
                     <th scope="col">Số bàn</th>
                     <th scope="col">Trạng thái</th>
-                    <th style = 'width: 20% ;' scope="col">Edit</th>
+                    <th style = 'width: 12% ;' scope="col">Edit</th>
                 </tr>
             </thead>
-            <tbody *ngIf="dataTable.length > 0">
-                <tr *ngFor="let dataTable of dataTable | paginate: { itemsPerPage: pageSize, currentPage: currentPage } , let i = index">
+            <tbody *ngIf="filteredData.length > 0">
+                <tr *ngFor="let dataTable of filteredData | paginate: { itemsPerPage: pageSize, currentPage: currentPage } , let i = index">
                     <td>
                         {{ (currentPage - 1) * pageSize + (i + 1) }}
                     </td>
@@ -34,16 +34,16 @@
                         {{dataTable.status}}
                     </td>
                     <td style="display: flex ; justify-content:space-around ;">
-                        <span style="width: 35% ;"><a routerLink='/pages/table/update/{{dataTable.id}}'>
-                            <button class="btn btn-primary">
-                                <img style = 'width: 45% ;' src='../../../assets/images/icons8-edit-new.svg'>
+                        <a routerLink='/pages/table/update/{{dataTable.id}}'>
+                            <button *ngFor="let status of primary" nbButton [status]="status" hero>
+                                <nb-icon icon="edit-outline"></nb-icon>
                             </button>
-                        </a></span>
-                        <span style="width: 35% ;"><a routerLink='/pages/table/delete/{{dataTable.id}}'>
-                            <button class="btn btn-danger">
-                                <img style = 'width: 45% ;' src='../../../assets/images/icon8-delete-new.svg'>
+                        </a>
+                        <a routerLink='/pages/table/delete/{{dataTable.id}}'>
+                            <button *ngFor="let status of danger" nbButton [status]="status" hero>
+                                <nb-icon icon="trash-2-outline"></nb-icon>
                             </button>
-                        </a></span>
+                        </a>
                     </td>
                 </tr>
             </tbody>

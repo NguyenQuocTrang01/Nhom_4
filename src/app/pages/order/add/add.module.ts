@@ -7,6 +7,7 @@ import { OrderRoutingModule } from '../order-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import {OrderdetailRoutingModule} from '../orderdetail/orderdetail-routing.module';
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import {OrderdetailRoutingModule} from '../orderdetail/orderdetail-routing.modul
     HttpClientModule,
     OrderRoutingModule,
     OrderdetailRoutingModule,
+    NbIconModule, NbButtonModule
   ],
   declarations: [
     OrderAddComponent

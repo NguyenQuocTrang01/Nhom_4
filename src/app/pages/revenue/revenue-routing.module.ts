@@ -17,12 +17,12 @@ const routes: Routes = [
     data: {breadcrumb: 'Thêm'},
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: RevenueUpdateComponent,
     data: {breadcrumb: 'Sửa'},
   },
   {
-    path: 'delete',
+    path: 'delete/:id',
     component: RevenueDeleteComponent,
     data: {breadcrumb: 'Xóa'},
   },

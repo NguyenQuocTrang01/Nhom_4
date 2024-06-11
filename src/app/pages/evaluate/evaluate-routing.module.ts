@@ -16,7 +16,7 @@ const routes: Routes = [
     data: {breadcrumb: 'Thêm'},
   },
   {
-    path: 'delete',
+    path: 'delete/:id',
     component: EvaluateDeleteComponent,
     data: {breadcrumb: 'Xóa'},
   },

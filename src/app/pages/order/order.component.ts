@@ -3,6 +3,7 @@ import { OrderService } from '../../@core/services/apis/order.service';
 import { TableService } from '../../@core/services/apis/table.service';
 import { Order } from '../../@core/interfaces/order.interface';
 import { Table } from '../../@core/interfaces/table.interface';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-orderl',
@@ -20,6 +21,7 @@ export class OrderComponent implements OnInit {
 
   currentPage: number = 1 ;
   pageSize: number = 4 ;
+  searchText: string = '' ;
 
   ngOnInit (): void {
     this.getOrders () ;
@@ -53,5 +55,35 @@ export class OrderComponent implements OnInit {
       console.log (err) ;
     })
   }
+
+  onSearchTextEntered (event: any) {
+    this.searchText = event.target.value ;
+    this.currentPage = 1 ;
+  }
+
+  get filteredData () : Order [] {
+    if (!this.searchText) {
+      return this.dataOrder ;
+    }
+
+    return this.dataOrder.filter (item =>
+      (item.date ? item.date.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+      ||
+      item.status.toLowerCase ().includes (this.searchText.toLowerCase ())
+      ||
+      (item.total ? item.total.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+      ||
+      (item.customer_id ? item.customer_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+      ||
+      (item.table_id ? item.table_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+    ) ;
+  }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }

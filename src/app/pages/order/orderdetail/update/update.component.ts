@@ -4,6 +4,8 @@ import { OrderdetailService } from '../../../../@core/services/apis/orderdetail.
 import { Orderdetail } from '../../../../@core/interfaces/orderdetail.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+
 
 @Component({
   selector: 'app-orderdetailu',
@@ -81,5 +83,13 @@ export class OrderdetailUpdateComponent implements OnInit {
       console.log (err) ;
     })
   }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }

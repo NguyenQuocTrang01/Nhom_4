@@ -30,14 +30,22 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
-
     });
 
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.router.navigate([ROUTER_CONFIG.pages]).then();
+      this.auth.dangNhap (this.loginForm.value).subscribe (res => {
+        if (res.data == true) {
+          this.router.navigate([ROUTER_CONFIG.pages]).then();
+          localStorage.setItem ('obj' , JSON.stringify (res.obj)) ;
+        } else {
+          this.alertMessages = [{status: 'danger', message: 'Email hoặc mật khẩu không chính xác'}];
+        }
+      })
+      
+      // this.router.navigate([ROUTER_CONFIG.pages]).then();
       // this.auth.login(this.loginForm.value)
       //   .pipe(
       //     finalize(() => {

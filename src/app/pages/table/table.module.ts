@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms'
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -23,7 +24,9 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms'
     BreadcrumbModule,
     HttpClientModule,
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NbIconModule,
+    NbButtonModule
   ],
   declarations: [
     TableComponent,

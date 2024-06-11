@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Order } from '../../../@core/interfaces/order.interface';
 import { Table } from '../../../@core/interfaces/table.interface';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-orderu',
@@ -33,6 +34,7 @@ export class OrderUpdateComponent implements OnInit {
     })
 
     if (this.id) {
+      console.log (this.id) ;
       this.getOrderById () ;
       this.getTable () ;
       this.getCustomer () ;
@@ -87,5 +89,13 @@ export class OrderUpdateComponent implements OnInit {
       console.log ('form chua hop le!') ;
     }
   }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }

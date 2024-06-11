@@ -12,8 +12,8 @@
                         Bạn có chắc chắn muốn xóa bàn này?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style="margin-right: 2% ;"><a routerLink="/pages/table" class="text-white" style="text-decoration: none ;">Hủy</a></button>
-                        <button type="submit" (click)="onSubmit ()" class="btn btn-danger">Xóa</button>
+                        <button style="margin-right: 2% ;" *ngFor="let status of primary" nbButton [status]="status" hero><a routerLink="/pages/table" class="text-white" style="text-decoration: none ;">HỦY</a></button>
+                        <button (click)="onSubmit ()" *ngFor="let status of danger" nbButton [status]="status" hero>XÓA</button>
                     </div>
                 </div>
             </div>

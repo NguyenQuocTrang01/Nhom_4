@@ -12,8 +12,8 @@
                         Bạn có chắc chắn muốn xóa danh mục này?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style="margin-right: 2% ;">Hủy</button>
-                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <button style="margin-right: 2% ;" *ngFor="let status of primary" nbButton [status]="status" hero><a routerLink="/pages/category" class="text-white" style="text-decoration: none ;">HỦY</a></button>
+                        <button (click)="onSubmit ()" *ngFor="let status of danger" nbButton [status]="status" hero>XÓA</button>
                     </div>
                 </form>
             </div>

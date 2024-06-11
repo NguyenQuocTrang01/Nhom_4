@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { OrderdetailService } from '../../../../@core/services/apis/orderdetail.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-orderdetaild',
@@ -28,5 +29,13 @@ export class OrderdetailDeleteComponent implements OnInit {
       })
     }
   }
+
+  danger: NbComponentStatus [] = [ 'danger' ] ;
+  primary: NbComponentStatus [] = [ 'primary' ] ;
+  success: NbComponentStatus [] = [ 'success' ] ;
+  warning: NbComponentStatus [] = [ 'warning' ] ;
+  statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
 
 }
