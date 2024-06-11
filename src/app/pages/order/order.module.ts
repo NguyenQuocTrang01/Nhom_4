@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { OrderRoutingModule } from './order-routing.module';
-import { OrderAddModule } from './add/add.module';
-import { OrderUpdateModule } from './update/update.module';
-import { OrderDeleteModule } from './delete/delete.module';
+import { OrderAddComponent } from './add/add.component';
+import { OrderUpdateComponent } from './update/update.component';
+import { OrderDeleteComponent } from './delete/delete.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms'
 import { NbIconModule, NbButtonModule } from '@nebular/theme';
@@ -15,9 +15,6 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
 @NgModule({
   imports: [
     OrderRoutingModule,
-    OrderAddModule,
-    OrderUpdateModule,
-    OrderDeleteModule,
     BreadcrumbModule,
     HttpClientModule,
     CommonModule,
@@ -28,7 +25,10 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
     NbButtonModule
   ],
   declarations: [
-    OrderComponent
+    OrderComponent,
+    OrderDeleteComponent,
+    OrderUpdateComponent,
+    OrderAddComponent,
   ],
 })
 export class OrderModule { }

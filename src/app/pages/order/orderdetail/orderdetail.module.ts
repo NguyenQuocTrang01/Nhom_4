@@ -4,9 +4,9 @@ import { BreadcrumbModule } from "xng-breadcrumb";
 import { CommonModule } from '@angular/common';
 
 import { OrderdetailRoutingModule } from './orderdetail-routing.module';
-import { OrderdetailAddModule } from './add/add.module';
-import { OrderdetailUpdateModule } from './update/update.module';
-import { OrderdetailDeleteModule } from './delete/delete.module';
+import { OrderdetailAddComponent } from './add/add.component';
+import { OrderdetailUpdateComponent } from './update/update.component';
+import { OrderdetailDeleteComponent } from './delete/delete.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms'
 import { NbIconModule, NbButtonModule } from '@nebular/theme';
@@ -14,9 +14,6 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
 @NgModule({
   imports: [
     OrderdetailRoutingModule,
-    OrderdetailAddModule,
-    OrderdetailUpdateModule,
-    OrderdetailDeleteModule,
     BreadcrumbModule,
     CommonModule,
     NgxPaginationModule,
@@ -25,7 +22,10 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
     NbIconModule, NbButtonModule
   ],
   declarations: [
-    OrderdetailComponent
+    OrderdetailComponent,
+    OrderdetailAddComponent,
+    OrderdetailUpdateComponent,
+    OrderdetailDeleteComponent
   ],
 })
 export class OrderdetailModule { }

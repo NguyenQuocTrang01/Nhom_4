@@ -5,6 +5,7 @@ import { Table } from '../../../@core/interfaces/table.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import Swal from 'sweetalert2' ;
 
 @Component({
   selector: 'app-update',
@@ -35,6 +36,7 @@ export class TableUpdateComponent implements OnInit {
       if (this.id) {
         this.table.updateTable (this.id , this.editForm.value).subscribe (res => {
           console.log ('cap nhat thanh cong') ;
+          this.showSweetAlertSuccess () ;
           this.router.navigate (['/pages/table']) ;
         })
       }
@@ -54,6 +56,15 @@ export class TableUpdateComponent implements OnInit {
         });
       })
     }
+  }
+
+  showSweetAlertSuccess () {
+    Swal.fire ({
+      title: 'Thành công!',
+      text: 'Xóa bàn thành công.',
+      icon: 'warning',
+      confirmButtonText: 'Đóng'
+    }) ;
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;

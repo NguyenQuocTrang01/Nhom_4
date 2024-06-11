@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Order } from '../../../@core/interfaces/order.interface';
 import { Table } from '../../../@core/interfaces/table.interface';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import Swal from 'sweetalert2' ;
 
 @Component({
   selector: 'app-orderu',
@@ -82,12 +83,22 @@ export class OrderUpdateComponent implements OnInit {
     if (this.editForm.valid == true) {
       this.order.updateOrder (this.editForm.value.id , this.editForm.value).subscribe (res => {
         console.log (res) ;
+        this.showSweetAlertSuccess () ;
         this.router.navigate (['/pages/order']) ;
       })
       console.log ('form da hop le!') ;
     } else {
       console.log ('form chua hop le!') ;
     }
+  }
+
+  showSweetAlertSuccess () {
+    Swal.fire ({
+      title: 'Thành công!',
+      text: 'Cập nhật hóa đơn thành công.',
+      icon: 'warning',
+      confirmButtonText: 'Đóng'
+    }) ;
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;

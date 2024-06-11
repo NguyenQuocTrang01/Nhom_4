@@ -3,6 +3,7 @@ import { OrderdetailService } from '../../../../@core/services/apis/orderdetail.
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import Swal from 'sweetalert2' ;
 
 @Component({
   selector: 'app-orderdetaild',
@@ -25,6 +26,7 @@ export class OrderdetailDeleteComponent implements OnInit {
     if (this.id) {
       this.orderdetail.deleteOrderdetail (this.id) .subscribe (res=> {
         console.log ('xoa thanh cong!') ;
+        this.showSweetAlertSuccess () ;
         this.router.navigate (['/pages/order/detail/' + this.order_id]) ;
       })
     }
@@ -37,5 +39,14 @@ export class OrderdetailDeleteComponent implements OnInit {
   statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
   shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
   sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
+
+  showSweetAlertSuccess () {
+    Swal.fire ({
+      title: 'Thành công!',
+      text: 'Xóa chi tiết hóa đơn thành công.',
+      icon: 'error',
+      confirmButtonText: 'Đóng'
+    }) ;
+  }
 
 }

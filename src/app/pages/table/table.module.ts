@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { TableComponent } from './table.component';
+import { TableAddComponent } from './add/add.component';
+import { TableUpdateComponent } from './update/update.component';
+import { TableDeleteComponent } from './delete/delete.component';
 import { BreadcrumbModule } from "xng-breadcrumb";
 
 import { TableRoutingModule } from './table-routing.module';
-import { TableAddModule } from './add/add.module';
-import { TableUpdateModule } from './update/update.module';
-import { TableDeleteModule } from './delete/delete.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -18,9 +18,6 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
     TableRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    TableAddModule,
-    TableUpdateModule,
-    TableDeleteModule,
     BreadcrumbModule,
     HttpClientModule,
     CommonModule,
@@ -30,6 +27,9 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
   ],
   declarations: [
     TableComponent,
+    TableAddComponent,
+    TableUpdateComponent,
+    TableDeleteComponent
   ],
 })
 export class TableModule { }

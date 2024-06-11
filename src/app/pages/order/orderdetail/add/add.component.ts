@@ -5,6 +5,7 @@ import { Orderdetail } from '../../../../@core/interfaces/orderdetail.interface'
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import Swal from 'sweetalert2' ;
 
 @Component({
   selector: 'app-orderdetaila',
@@ -46,6 +47,7 @@ export class OrderdetailAddComponent implements OnInit {
         if (this.order_id) {
           this.orderdetail.createOrderdetail (dataOrderdetail).subscribe (res => {
             console.log ('Them thanh cong chi tiet hoa don') ;
+            this.showSweetAlertSuccess () ;
             this.router.navigate (['/pages/order/detail/' + this.order_id]) ;
           }, err => {
             console.log (err) ;
@@ -65,6 +67,15 @@ export class OrderdetailAddComponent implements OnInit {
     }, err => {
       console.log (err) ;
     })
+  }
+
+  showSweetAlertSuccess () {
+    Swal.fire ({
+      title: 'Thành công!',
+      text: 'Thêm chit tiết hóa đơn thành công.',
+      icon: 'success',
+      confirmButtonText: 'Đóng'
+    }) ;
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;

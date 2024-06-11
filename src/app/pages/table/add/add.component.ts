@@ -4,6 +4,7 @@ import { TableService } from '../../../@core/services/apis/table.service';
 import { Router } from '@angular/router';
 import { Table } from '../../../@core/interfaces/table.interface';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import Swal from 'sweetalert2' ;
 
 @Component({
   selector: 'app-add',
@@ -13,7 +14,6 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
 
 export class TableAddComponent implements OnInit {
 
-  @Input () showSuccessAlert : boolean = false ;
   isVal : boolean = false ;
   addForm!: FormGroup ;
   
@@ -28,10 +28,9 @@ export class TableAddComponent implements OnInit {
 
   onSubmit () {
     this.isVal = true ;
-    console.log (this.addForm.value) ;
     if (this.addForm.valid == true) {
       this.table.createTable (this.addForm.value).subscribe (res => {
-        console.log ('Them thanh cong') ;
+        this.showSweetAlertSuccess () ;
         this.router.navigate (['/pages/table']) ;
       }, err => {
         console.log (err) ;
@@ -40,6 +39,15 @@ export class TableAddComponent implements OnInit {
     } else {
       console.log ('form chua hop le!') ;
     }
+  }
+
+  showSweetAlertSuccess () {
+    Swal.fire ({
+      title: 'Thành công!',
+      text: 'Thêm bàn thành công.',
+      icon: 'success',
+      confirmButtonText: 'Đóng'
+    }) ;
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;

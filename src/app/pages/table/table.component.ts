@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { TableService } from '../../@core/services/apis/table.service';
 import { Table } from '../../@core/interfaces/table.interface';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -16,7 +17,7 @@ export class TableComponent implements OnInit {
   pageSize: number = 4 ;
   searchText: string = '' ;
 
-  constructor (private table : TableService) {}
+  constructor (private table : TableService , private router : Router) {}
 
   ngOnInit (): void {
     this.getTable () ;
