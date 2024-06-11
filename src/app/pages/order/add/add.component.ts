@@ -27,10 +27,10 @@ export class OrderAddComponent implements OnInit {
     this.addForm = new FormGroup ({
       customer_id: new FormControl ('' , Validators.required),
       product_id: new FormControl ('' , Validators.required),
-      quantity: new FormControl ('' , Validators.required),
+      quantity: new FormControl ('' , [Validators.required , Validators.min (1)]),
       table_id: new FormControl ('' , Validators.required),
       status: new FormControl ('' , Validators.required),
-      total: new FormControl ('' , Validators.required),
+      total: new FormControl ('' , [Validators.required , Validators.min (1)]),
     })
 
     this.getCustomer () ;
@@ -40,7 +40,7 @@ export class OrderAddComponent implements OnInit {
 
   onSubmit () {
     this.isVal = true ;
-    console.log (this.addForm.value) ;
+    console.log (this.addForm) ;
     if (this.addForm.valid == true) {
       let dataOrder : any = {
         customer_id : this.addForm.value.customer_id ,

@@ -44,20 +44,10 @@
                         {{dataOrderdetail.quantity}}
                     </td>
                     <td>
-                        {{dataOrderdetail.price | currency:'VND':'symbol':'1.0-0'}}
+                        {{dataOrderdetail.price | number:'1.0-0'}} VND
                     </td>
                     <td>
                         <div style="display: flex ; justify-content:space-around ;">
-                            <!-- <span style="width: 36%"><a routerLink='/pages/order/detail/de/update/{{dataOrderdetail.id}}'>
-                                <button class="btn btn-primary">
-                                    <img style = 'width: 45% ;' src='../../../assets/images/icons8-edit-new.svg'>
-                                </button>
-                            </a></span>
-                            <span style="width: 36% ;"><a routerLink='/pages/order/detail/de/delete/{{dataOrderdetail.id}}'>
-                                <button class="btn btn-danger">
-                                    <img style = 'width: 45% ;' src='../../../assets/images/icon8-delete-new.svg'>
-                                </button>
-                            </a></span> -->
                             <a routerLink='/pages/order/detail/de/update/{{dataOrderdetail.id}}'>
                                 <button *ngFor="let status of primary" nbButton [status]="status" hero>
                                     <nb-icon icon="edit-outline"></nb-icon>

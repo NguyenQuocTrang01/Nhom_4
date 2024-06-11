@@ -10,7 +10,7 @@
                 <form (ngSubmit)="onSubmit ()" [formGroup]="editForm">
                     <div class="form-group row">
                         <div class="col-6">
-                            <label for="role">ID người dùng</label>
+                            <label for="role">Người dùng</label>
                             <select class="form-control" name="customer_id" formControlName="customer_id">
                                 <option value="">Chọn ID</option>
                                 <option *ngFor="let dataCustomer of dataCustomer" value="{{dataCustomer.id}}">{{dataCustomer.username}}</option>
@@ -20,7 +20,7 @@
                         <div class="col-6">
                             <label for="role">Số bàn</label>
                             <select class="form-control" name="table_id" formControlName="table_id">
-                                <option value="">Chọn ID</option>
+                                <option value="">Chọn bàn</option>
                                 <option *ngFor="let dataTable of dataTable" value="{{dataTable.id}}">{{dataTable.number}}</option>
                             </select>
                             <span *ngIf="isVal && editForm.get ('table_id')!.invalid" class="text-danger">Vui lòng chọn số bàn!</span>
@@ -38,7 +38,10 @@
                     <div class="form-group mt-4">
                         <label for="role">Tổng</label>
                         <input type="number" class="form-control" name="total" formControlName="total">
-                        <span *ngIf="isVal && editForm.get ('total')!.invalid" class="text-danger">Vui lòng chọn số bàn!</span>
+                        <span *ngIf="isVal && editForm.get ('total')?.invalid" class="text-danger">
+                            <span *ngIf="editForm.get('total')?.errors?.['required']">Vui lòng nhập tổng!</span>
+                            <span *ngIf="editForm.get('total')?.errors?.['min']">Tổng không được bé hơn 1!</span>
+                        </span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
                         <a style="width: 20%" routerLink="/pages/order"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>

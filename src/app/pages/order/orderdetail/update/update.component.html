@@ -9,9 +9,9 @@
             <div class="card-body">
                 <form (ngSubmit)="onSubmit ()" [formGroup]="editForm">
                     <div class="form-group">
-                        <label for="role">ID sản phẩm</label>
+                        <label for="role">Sản phẩm</label>
                         <select class="form-control" name="product_id" formControlName="product_id">
-                            <option value="">Chọn ID</option>
+                            <option value="">Chọn sản phẩm</option>
                             <option *ngFor="let dataProduct of dataProduct" value="{{dataProduct.id}}">{{dataProduct.name}}</option>
                         </select>
                         <span *ngIf="isVal && editForm.get ('product_id')!.invalid" class="text-danger">Vui lòng chọn sản phẩm!</span>
@@ -19,7 +19,10 @@
                     <div class="form-group mt-4">
                         <label for="username">Số lượng</label>
                         <input type="number" class="form-control" name="quantity" formControlName="quantity">
-                        <span *ngIf="isVal && editForm.get ('quantity')!.invalid" class="text-danger">Vui lòng chọn số lượng!</span>
+                        <span *ngIf="isVal && editForm.get ('quantity')?.invalid" class="text-danger">
+                            <span *ngIf="editForm.get('quantity')?.errors?.['required']">Vui lòng chọn số lượng!</span>
+                            <span *ngIf="editForm.get('quantity')?.errors?.['min']">Số lượng không được bé hơn 1!</span>
+                        </span>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
                         <a style="width: 20%" routerLink="/pages/order/detail/{{order_id}}"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>

@@ -24,7 +24,7 @@ export class OrderdetailAddComponent implements OnInit {
   ngOnInit(): void {
     this.addForm = new FormGroup ({
       product_id: new FormControl ('' , Validators.required),
-      quantity: new FormControl ('' , Validators.required),
+      quantity: new FormControl ('' , [Validators.required , Validators.min (1)]),
     })
 
     this.getProduct () ;

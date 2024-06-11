@@ -26,7 +26,7 @@ export class OrderdetailUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.editForm = new FormGroup ({
       product_id: new FormControl ('' , Validators.required),
-      quantity: new FormControl ('' , Validators.required),
+      quantity: new FormControl ('' , [Validators.required , Validators.min (1)]),
     })
 
     this.getOrderdetailByID () ;

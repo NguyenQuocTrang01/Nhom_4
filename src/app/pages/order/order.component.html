@@ -47,7 +47,7 @@
                         </span>
                     </td>
                     <td>
-                       {{dataOrder.total | currency:'VND':'symbol':'1.0-0'}}
+                        {{dataOrder.total | number:'1.0-0'}} VND
                     </td>
                     <td style="display: flex ; justify-content:space-around ;">
                         <a routerLink='/pages/order/update/{{dataOrder.id}}'>

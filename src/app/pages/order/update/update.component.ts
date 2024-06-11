@@ -28,7 +28,7 @@ export class OrderUpdateComponent implements OnInit {
     this.editForm = new FormGroup ({
       id: new FormControl ('' , Validators.required),
       customer_id: new FormControl ('' , Validators.required),
-      total: new FormControl ('' , Validators.required),
+      total: new FormControl ('' , [Validators.required , Validators.min (1)]),
       table_id: new FormControl ('' , Validators.required),
       status: new FormControl ('' , Validators.required),
     })
