@@ -66,24 +66,27 @@ export class OrderComponent implements OnInit {
       return this.dataOrder ;
     }
 
-    return this.dataOrder.filter (item =>
-      (item.date ? item.date.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-      ||
-      item.status.toLowerCase ().includes (this.searchText.toLowerCase ())
-      ||
-      (item.total ? item.total.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-      ||
-      (item.customer_id ? item.customer_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-      ||
-      (item.table_id ? item.table_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-    ) ;
+    const filteredOrders = this.dataOrder.filter (order => {
+      const customerName = this.dataCustomer.find (customer => customer.id === order.customer_id)?.username?.toLowerCase () ;
+      return (
+        (order.date ? order.date.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+        ||
+        order.status.toLowerCase ().includes (this.searchText.toLowerCase ()) 
+        ||
+        (order.total ? order.total.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+        ||
+        (customerName || '').includes (this.searchText.toLowerCase ())
+      ) ;
+    }) ;
+  
+    return filteredOrders ;
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;
   primary: NbComponentStatus [] = [ 'primary' ] ;
   success: NbComponentStatus [] = [ 'success' ] ;
   warning: NbComponentStatus [] = [ 'warning' ] ;
-  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
-  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
+  shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ] ;
+  sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ] ;
 
 }

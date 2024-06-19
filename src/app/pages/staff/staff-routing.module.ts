@@ -1,36 +1,26 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
-
-import {StaffComponent} from './staff.component';
-import {StaffAddComponent} from "./add/add.component";
-import {StaffUpdateComponent} from "./update/update.component";
-import {StaffDeleteComponent} from "./delete/delete.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { StaffComponent } from './staff.component';
+import { StaffAddComponent } from './add/add.component';
+import { StaffUpdateComponent } from './update/update.component';
+import { StaffDeleteComponent } from './delete/delete.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: StaffComponent,
+  { path: '', component: StaffComponent 
   },
-  {
-    path: 'add',
-    component: StaffAddComponent,
-    data: {breadcrumb: 'Thêm'},
+  { path: 'add', component: StaffAddComponent, 
+    data: { breadcrumb: 'Thêm' } 
   },
-  {
-    path: 'update',
-    component: StaffUpdateComponent,
-    data: {breadcrumb: 'Sửa'},
+  { path: 'update/:id', component: StaffUpdateComponent, 
+    data: { breadcrumb: 'Sửa' } 
   },
-  {
-    path: 'delete',
-    component: StaffDeleteComponent,
-    data: {breadcrumb: 'Xóa'},
-  },
+  { path: 'delete/:id', component: StaffDeleteComponent, 
+    data: { breadcrumb: 'Xóa' } 
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class StaffRoutingModule {
-}
+export class StaffRoutingModule {}

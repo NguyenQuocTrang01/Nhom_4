@@ -1,12 +1,23 @@
 import { NgModule } from '@angular/core';
-import {StaffDeleteComponent} from './delete.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
+import { HttpClientModule } from '@angular/common/http';
+import { NbIconModule, NbButtonModule } from '@nebular/theme';
+import { CommonModule } from '@angular/common';
+import { StaffDeleteComponent } from './delete.component';
+import { StaffRoutingModule } from '../staff-routing.module';
+
 @NgModule({
   imports: [
-    BreadcrumbModule
+    BreadcrumbModule,
+    StaffRoutingModule,
+    HttpClientModule,
+    NbIconModule, 
+    NbButtonModule,
+    CommonModule
   ],
   declarations: [
-    StaffDeleteComponent
+    StaffDeleteComponent,
   ],
 })
+
 export class StaffDeleteModule { }

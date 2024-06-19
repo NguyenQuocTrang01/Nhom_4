@@ -7,30 +7,30 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="index.php?act=user&action=add" method="post">
+                <form (ngSubmit)="onSubmit ()" [formGroup]="editForm">
                     <div class="form-group">
                         <label for="username">Tên</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <input type="text" class="form-control" id="username" name="username"formControlName="username">
                     </div>
                     <div class="form-group mt-4">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email"formControlName="email">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Số điện thoại</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="phone">Số điện thoại</label>
+                        <input type="phone" class="form-control" id="phone" name="password"formControlName="phone">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="role">Chức vụ</label>
-                        <select class="form-control" id="role" name="role" required>
+                        <label for="postition">Chức vụ</label>
+                        <select class="form-control" id="role" name="role" formControlName="postition">
                             <option value="">Chọn chức vụ</option>
                             <option value="admin">Admin</option>
-                            <option value="user">Người dùng</option>
+                            <option value="user">Nhân Viên</option>
                         </select>
                     </div>
                     <div class="form-group text-center mt-4" style="display: flex ; justify-content:space-around ; width: 70% ; margin: auto ;">
-                        <a style="width: 25% ; color: white ; text-decoration: none ;" href="index.php?act=user" class="btn btn-secondary">Hủy</a>
-                        <button style="width: 25% ;" type="submit" class="btn btn-primary">Thêm</button>
+                        <a style="width: 20%" routerLink="/pages/staff"><button style="width: 100%" type="submit" *ngFor="let status of warning" nbButton [status]="status" hero>Hủy</button></a>
+                        <button style="width: 20%" type="submit" *ngFor="let status of primary" nbButton [status]="status" hero>Lưu</button>
                     </div>
                 </form>
             </div>

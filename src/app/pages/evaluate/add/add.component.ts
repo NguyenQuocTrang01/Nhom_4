@@ -12,6 +12,8 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
 export class EvaluateAddComponent implements OnInit {
   isVal : boolean = false ;
   addForm!: FormGroup ;
+  dataCustomer : any [] = [] ;
+  dataProduct : any [] = [] ;
 
   constructor(private evaluates: EvaluateService , private router : Router){}
 
@@ -21,6 +23,8 @@ export class EvaluateAddComponent implements OnInit {
       star: new FormControl ('' , Validators.required),
       customers_id: new FormControl ('' , Validators.required),
     })
+    this.getCustomer () ;
+    this.getProduct () ;
   }
   onSubmit () {
     this.isVal = true ;
@@ -36,6 +40,24 @@ export class EvaluateAddComponent implements OnInit {
     } else {
       console.log ('form chua hop le!') ;
     }
+  }
+
+  getCustomer () {
+    this.evaluates.getCustomer ().subscribe (res => {
+      console.log (res.data) ;
+      this.dataCustomer = res.data ;
+    }, err => {
+      console.log (err) ;
+    })
+  }
+
+  getProduct () {
+    this.evaluates.getProduct ().subscribe (res => {
+      console.log (res.data) ;
+      this.dataProduct = res.data ;
+    }, err => {
+      console.log (err) ;
+    })
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;

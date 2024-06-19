@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
-
-import {StaffComponent} from './staff.component';
-
-import {StaffRoutingModule} from './staff-routing.module';
-import {StaffAddModule} from './add/add.module';
-import {StaffUpdateModule} from './update/update.module';
-import {StaffDeleteModule} from './delete/delete.module';
-import {BreadcrumbModule} from "xng-breadcrumb";
+import { CommonModule } from '@angular/common';
+import { StaffRoutingModule } from './staff-routing.module';
+import { StaffComponent } from './staff.component';
+import { StaffAddComponent } from './add/add.component';
+import { StaffUpdateComponent } from './update/update.component';
+import { StaffDeleteComponent } from './delete/delete.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
+  declarations: [
+    StaffComponent,
+    StaffAddComponent,
+    StaffUpdateComponent,
+    StaffDeleteComponent
+  ],
   imports: [
+    CommonModule,
     StaffRoutingModule,
     BreadcrumbModule,
-    StaffAddModule,
-    StaffUpdateModule,
-    StaffDeleteModule,
-  ],
-  declarations: [
-    StaffComponent
-  ],
+    NgxPaginationModule,
+    ReactiveFormsModule
+  ]
 })
-export class StaffModule { }
+export class StaffModule {}

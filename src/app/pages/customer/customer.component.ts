@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Customer } from 'app/@core/interfaces/customer.interface';
+import { Component , Input ,OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators, } from '@angular/forms';
+import { Customer} from 'app/@core/interfaces/customer.interface';
 import { CustomerService } from 'app/@core/services/apis/customer.service';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
@@ -8,16 +9,27 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss']
 })
-export class CustomerComponent {
+export class CustomerComponent implements OnInit {
   dataCustomer : Customer [] = [] ;
   currentPage: number = 1 ;
   pageSize: number = 4 ;
   searchText: string = '' ;
+  
 
+  @Input () showSuccessAlert : boolean = false ;
+  isVal : boolean = false ;
+  addForm!: FormGroup ;
   constructor (private table : CustomerService) {}
 
+  
   ngOnInit (): void {
     this.getCustomer () ;
+    this.addForm = new FormGroup ({
+      name: new FormControl ('' , Validators.required),
+      email: new FormControl ('' , Validators.required),
+      phone: new FormControl ('' , Validators.required),
+      address: new FormControl ('' , Validators.required),
+    })
   }
 
   getCustomer () {

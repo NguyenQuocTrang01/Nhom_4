@@ -10,12 +10,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NbIconModule, NbButtonModule } from '@nebular/theme';
+import { EvaluateUpdateModule } from './update/update.module';
+
 
 @NgModule({
   imports: [
     EvaluateRoutingModule,
     EvaluateAddModule,
     EvaluateDeleteModule,
+    EvaluateUpdateModule,
     BreadcrumbModule,
     CommonModule,
     FormsModule,
@@ -25,7 +28,8 @@ import { NbIconModule, NbButtonModule } from '@nebular/theme';
     NbIconModule, NbButtonModule
   ],
   declarations: [
-    EvaluateComponent
+    EvaluateComponent,
+    
   ],
 })
 export class EvaluateModule { }

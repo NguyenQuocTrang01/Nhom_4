@@ -11,6 +11,8 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
 export class EvaluateComponent implements OnInit {
 
   dataEvaluate : Evaluate [] = [];
+  dataCustomer : any [] = [] ;
+  dataProduct : any [] = [] ;
   currentPage: number = 1 ;
   pageSize: number = 4 ;
   searchText: string = '' ;
@@ -18,6 +20,8 @@ export class EvaluateComponent implements OnInit {
   constructor(private evaluates : EvaluateService){}
   ngOnInit(): void {
     this.getEvaluate();
+    this.getCustomer () ;
+    this.getProduct () ;
   }
 
   getEvaluate(){
@@ -30,6 +34,24 @@ export class EvaluateComponent implements OnInit {
       
     })
 
+  }
+
+  getCustomer () {
+    this.evaluates.getCustomer ().subscribe (res => {
+      console.log (res.data) ;
+      this.dataCustomer = res.data ;
+    }, err => {
+      console.log (err) ;
+    })
+  }
+
+  getProduct () {
+    this.evaluates.getProduct ().subscribe (res => {
+      console.log (res.data) ;
+      this.dataProduct = res.data ;
+    }, err => {
+      console.log (err) ;
+    })
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;

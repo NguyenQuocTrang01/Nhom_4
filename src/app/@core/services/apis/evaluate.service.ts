@@ -32,4 +32,12 @@ export class EvaluateService {
     return this.http.delete (API_ENDPOINT.evaluates.base + '/' + id) ;
   }
 
+  getCustomer () : Observable <any> {
+    return this.http.get (API_ENDPOINT.customer.base) ;
+  }
+
+  getProduct () : Observable <any> {
+    return this.http.get (API_ENDPOINT.product.base) ;
+  }
+  
 }

@@ -18,30 +18,35 @@
                     <th style = 'width: 20% ;' scope="col">Edit</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody *ngIf="dataStaff.length > 0">
+                <tr *ngFor="let dataStaff of dataStaff | paginate: { itemsPerPage: pageSize, currentPage: currentPage } , let i = index">
                     <td>
-                        3
+                        {{ (currentPage - 1) * pageSize + (i + 1) }}
                     </td>
                     <td>
-                        Nguyễn Quốc Trạng
+                        {{dataStaff.username}}
                     </td>
                     <td>
-                        trangnqpc05335
+                        {{dataStaff.email}}
                     </td>
                     <td>
-                        0787827322
+                        {{dataStaff.phone}}
                     </td>
                     <td>
-                        Quản lý app
+                        {{dataStaff.position}}
+                        <span *ngFor="let dataStaff of dataStaff ; let y = index">
+                            <span *ngIf="dataStaff.position == dataStaff.position">{{dataStaff.position}}</span>
+                        </span>
                     </td>
+                  
+                    
                     <td style="display: flex ; justify-content:space-around ;">
-                        <span style="width: 35% ;"><a routerLink='/pages/staff/update'>
+                        <span style="width: 35% ;"><a routerLink='/pages/staff/update/{{dataStaff.id}}'>
                             <button class="btn btn-primary">
                                 <img style = 'width: 45% ;' src='../../../assets/images/icons8-edit-new.svg'>
                             </button>
                         </a></span>
-                        <span style="width: 35% ;"><a routerLink='/pages/staff/delete'>
+                        <span style="width: 35% ;"><a routerLink='/pages/staff/delete/{{dataStaff.id}}'>
                             <button class="btn btn-danger">
                                 <img style = 'width: 45% ;' src='../../../assets/images/icon8-delete-new.svg'>
                             </button>
@@ -50,5 +55,10 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> 
+    <div>
+        <div class="d-flex justify-content-center mt-3">
+            <pagination-controls class="custom-pagination" (pageChange)="currentPage = $event"></pagination-controls>
+        </div>  
+    </div>        
 </div>

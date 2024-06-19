@@ -14,9 +14,9 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th style="width: 10% ;" scope="col">Hình ảnh</th>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col">Khach Hang </th>
+                    <th style="width: 10% ;" scope="col">Star</th>
+                    <th scope="col">ID Sản Phẩm</th>
+                    <th scope="col">ID Khach Hang </th>
                     <th style = 'width: 12% ;' scope="col">Edit</th>
                 </tr>
             </thead>
@@ -44,9 +44,9 @@
                                     <nb-icon icon="trash-2-outline"></nb-icon>
                                 </button>
                             </a>
-                            <a routerLink='/pages/evaluate/detail//{{dataEvaluate.id}}'>
+                            <a routerLink='/pages/evaluate/update/{{dataEvaluate.id}}'>
                                 <button *ngFor="let status of warning" nbButton [status]="status" hero>
-                                    <nb-icon icon="eye-outline"></nb-icon>
+                                    <nb-icon icon="edit-outline"></nb-icon>
                                 </button>
                             </a>
                         </div>
@@ -55,4 +55,9 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <div class="d-flex justify-content-center mt-3">
+            <pagination-controls class="custom-pagination" (pageChange)="currentPage = $event"></pagination-controls>
+        </div>  
+    </div>   
 </div>

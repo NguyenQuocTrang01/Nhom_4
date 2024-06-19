@@ -21,7 +21,7 @@ export class EvaluateDeleteComponent implements OnInit {
     if (this.id) {
       this.evaluates.deleteEvaluate (this.id).subscribe (res => {
         console.log ('xoa thanh cong') ;
-        this.router.navigate (['/pages/table']) ; 
+        this.router.navigate (['/pages/evaluate']) ; 
       })
     }
   }

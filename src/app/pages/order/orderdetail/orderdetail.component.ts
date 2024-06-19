@@ -58,15 +58,22 @@ export class OrderdetailComponent implements OnInit {
       return this.dataOrderdetail ;
     }
 
-    return this.dataOrderdetail.filter (item =>
-      (item.quantity ? item.quantity.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-      ||
-      (item.price ? item.price.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-      ||
-      (item.orders_id ? item.orders_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-      ||
-      (item.product_id ? item.product_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
-    ) ;
+    const filteredOrderdetail = this.dataOrderdetail.filter (orderdetail => {
+      const productName = this.dataProduct.find (product => product.id === orderdetail.product_id)?.name?.toLowerCase () ;
+      return (
+        (orderdetail.quantity ? orderdetail.quantity.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+        ||
+        (orderdetail.price ? orderdetail.price.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+        ||
+        (orderdetail.orders_id ? orderdetail.orders_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+        ||
+        (orderdetail.product_id ? orderdetail.product_id.toString ().toLowerCase () : '').includes (this.searchText.toLowerCase ()) 
+        ||
+        (productName || '').includes (this.searchText.toLowerCase ())
+      ) ;
+    }) ;
+
+    return filteredOrderdetail ;
   }
 
   danger: NbComponentStatus [] = [ 'danger' ] ;
